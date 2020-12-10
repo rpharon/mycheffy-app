@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "1007824463475",
+    "firebase_url": "https://mycheffysocialmediaauth.firebaseio.com",
+    "project_id": "mycheffysocialmediaauth",
+    "storage_bucket": "mycheffysocialmediaauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007824463475:android:beb63687fe45ff62d0ac06",
+        "android_client_info": {
+          "package_name": "com.mycheffy.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007824463475-jdsujj83ls4s25ucrelk445alur4hvk5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycheffy.app",
+            "certificate_hash": "a854b4083bd69e34a4409cc6a2f3fd7ae1a7b9bc"
+          }
+        },
+        {
+          "client_id": "1007824463475-ljhvmfsa6hq457b8gj63f2k5k4diufuo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycheffy.app",
+            "certificate_hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+          }
+        },
+        {
+          "client_id": "1007824463475-qd23v8c9s4dn0g983j2ukefcksafb47j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy4zeLOzW3xQuuaJkCUm60dzPhoLz3KL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1007824463475-qd23v8c9s4dn0g983j2ukefcksafb47j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1007824463475-njhvq6m3k713010h119mpt115ljliffd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycheffy.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

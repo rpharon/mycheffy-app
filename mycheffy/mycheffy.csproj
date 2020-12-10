@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Plugin.GoogleClient" Version="1.1.1" />
+    <PackageReference Include="Plugin.FacebookClient" Version="2.1.14" />
+    <PackageReference Include="Refit" Version="5.2.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\SocialMediaAuthentication\" />
+    <Folder Include="ViewModels\SocialMediaAuthentication\" />
+    <Folder Include="Views\Pages\" />
+    <Folder Include="Views\Pages\Login\" />
+    <Folder Include="ViewModels\Login\" />
+  </ItemGroup>
+</Project>
