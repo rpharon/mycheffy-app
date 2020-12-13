@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ContentViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       x:Class="mycheffy.Views.ContentViews.Offers.OffersPromoTabContentView"
+                       xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Offers;assembly=mycheffy"
+                       x:TypeArguments="viewModels:OffersPromoTabViewModel"
+                       xmlns:effects="clr-namespace:mycheffy.Effects;assembly=mycheffy"
+                        xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                       xmlns:views="clr-namespace:mycheffy.Views.ContentViews;assembly=mycheffy"
+                       xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                       Padding="20,0,20,0"
+                       prism:ViewModelLocator.AutowireViewModel="True">
+    <views:ContentViewBase.Content>
+       
+            <CollectionView x:Name="ContextDemoList" ItemsSource="{Binding Promos}" SelectionMode="None"  BackgroundColor="Transparent" Margin="0,20,0,0">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                     
+                        VerticalItemSpacing="20"
+                        HorizontalItemSpacing="30" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <pancakeView:PancakeView CornerRadius="24" BackgroundColor="{DynamicResource PrimaryBackgroundColor}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Padding="10">
+                            <Grid HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="{Binding photo}" HorizontalOptions="Start"></Image>
+                                <Frame Grid.Row="0" Grid.Column="1" HorizontalOptions="End" CornerRadius="10"
+                                       HasShadow="False" BorderColor="#CB0000">
+                                    <Label Text="{Binding code}" FontSize="12" HorizontalOptions="End"></Label>
+                                </Frame>
+                                <Expander Grid.Row="1" Grid.ColumnSpan="2">
+                                    <Expander.Header>
+                                        <Label Text="Expand"></Label>
+                                    </Expander.Header>
+                                    <StackLayout>
+                                        <Label Text="{Binding title}" FontSize="14" FontAttributes="Bold" TextColor="{DynamicResource TextColor}"></Label>
+                                        <Label Text="{Binding description1}"></Label>
+                                        <Label Text="{Binding description2}"></Label>
+                                    </StackLayout>
+                                </Expander>
+                              
+                            </Grid>
+                           
+                        </pancakeView:PancakeView>
+                    </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+         
+    </views:ContentViewBase.Content>
+</views:ContentViewBase>

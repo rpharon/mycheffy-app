@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ContentViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:effects="clr-namespace:mycheffy.Effects;assembly=mycheffy"
+                       xmlns:views="clr-namespace:mycheffy.Views.ContentViews;assembly=mycheffy"
+                       xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Profile;assembly=mycheffy"
+                       xmlns:custom="clr-namespace:mycheffy.CustomRenderer"
+                       x:TypeArguments="viewModels:ProfileViewModel"
+                       prism:ViewModelLocator.AutowireViewModel="True"
+                       x:Class="mycheffy.Views.ContentViews.Profile.ProfileContentView"
+                       Padding="{OnPlatform '0,0,0,0', iOS='0,20,0,0'}">
+        <StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         Padding="20">
+                <StackLayout Orientation="Vertical"
+                             HorizontalOptions="StartAndExpand">
+                    <Label Text="{Binding FullName}"
+                           FontSize="Title"
+                           FontAttributes="Bold"/>
+                <Label Text="09171234567 * phillip@gmail.com"
+                           TextColor="DimGray"
+                           FontSize="Small"
+                           HorizontalOptions="StartAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span 
+                                  FontSize="Small"
+                                      Text="{Binding Number}" />
+                                <Span 
+                                      FontSize="Small"
+                                      Text=" * " />
+                                <Span 
+                                       FontSize="Small"
+                                      Text="{Binding Email}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand">
+                    <Button x:Name="EditButton"
+                            Text="Edit"
+                            TextColor="#CB0000"/>
+                </StackLayout>
+            </StackLayout>
+
+            <ListView x:Name="ProfileListView"
+                      ItemsSource="{Binding ProfileList}"
+                      HasUnevenRows="True"
+                      SelectionMode="None"
+                      RowHeight="50"
+                      HeightRequest="350"
+                      Footer="">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout VerticalOptions="Center">
+                                    <Image HeightRequest="20" WidthRequest="20">
+                                        <Image.Source>
+                                            <FileImageSource File="{Binding Icon}"/>
+                                        </Image.Source>
+                                    </Image>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1"
+                                             Padding="10,0,0,0">
+                                    <Label Text="{Binding Name}"
+                                            TextColor="Black"
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </views:ContentViewBase>

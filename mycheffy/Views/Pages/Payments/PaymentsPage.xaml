@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       x:Class="mycheffy.Views.Pages.Payments.PaymentsPage"
+                       xmlns:views="clr-namespace:mycheffy.Views.Pages;assembly=mycheffy"
+                       xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Payments;assembly=mycheffy"
+                       x:TypeArguments="viewModels:PaymentsViewModel"
+                       xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                       prism:ViewModelLocator.AutowireViewModel="True"
+                       Padding="{OnPlatform '0,0,0,0', iOS='0,50,0,0'}">
+    <ContentPage.Content>
+        <ContentView Content="{Binding Content}"></ContentView>
+    </ContentPage.Content>
+        
+</views:ContentPageBase>

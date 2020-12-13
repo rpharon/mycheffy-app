@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:views="clr-namespace:mycheffy.Views.Pages;assembly=mycheffy"
+                xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Profile;assembly=mycheffy"
+                xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+                x:TypeArguments="viewModels:AddNewAddressViewModel"
+                x:Class="mycheffy.Views.Pages.Profile.AddNewAddressPage"
+                xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                prism:ViewModelLocator.AutowireViewModel="True"
+                Padding="{OnPlatform '0,0,0,0', iOS='0,50,0,0'}">
+    <StackLayout Padding="10">
+        <StackLayout Orientation="Horizontal"
+                     Padding="0,0,0,20">  
+            <ImageButton x:Name="BackButton"
+                        AutomationId="Back"
+                        Source="back_icon"
+                        BackgroundColor="#E6E6E6"
+                        Opacity="0.7"
+                        Padding="8"/>
+            <Label Text="Add New Address"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    Margin="10,0,0,0"
+                    VerticalOptions="CenterAndExpand"/> 
+        </StackLayout>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="70*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Type"
+                    TextColor="{DynamicResource TextColor4}"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    Padding="0,0,0,10"/>
+            <input:AdvancedEntry Grid.Column="1"
+                                    Text="{Binding Type}"
+                                    TextColor="Black"
+                                    TextFontSize="Medium"
+                                    CornerRadius="5"
+                                    HorizontalOptions="StartAndExpand"
+                                    Keyboard="Default"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="70*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Address 1"
+                    TextColor="{DynamicResource TextColor4}"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    Padding="0,0,0,10"/>
+            <input:AdvancedEntry Grid.Column="1"
+                                    Text="{Binding CompleteAddress}"
+                                    TextColor="Black"
+                                    TextFontSize="Medium"
+                                    CornerRadius="5"
+                                    HorizontalOptions="StartAndExpand"
+                                    Keyboard="Default"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="70*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Address 2"
+                    TextColor="{DynamicResource TextColor4}"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    Padding="0,0,0,10"/>
+            <input:AdvancedEntry Grid.Column="1"
+                                    Text="{Binding FullGoogleAddress}"
+                                    TextColor="Black"
+                                    TextFontSize="Medium"
+                                    CornerRadius="5"
+                                    HorizontalOptions="StartAndExpand"
+                                    Keyboard="Default"/>
+        </Grid>
+
+        <StackLayout Orientation="Vertical">
+            <StackLayout Padding="0,10,0,0">
+                <Label Text="Pin Location"
+                        TextColor="{DynamicResource TextColor1}"
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Padding="0,0,0,10"/>
+                <Image x:Name="ImageMap" Source="google_maps"
+                        Aspect="AspectFit">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="ImageTap"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+
+            <StackLayout>
+                <Button x:Name="SaveButton"
+                        AutomationId="Save"
+                        Text="SAVE"
+                        TextColor="White"
+                        BackgroundColor="#CB0000"
+                        HorizontalOptions="FillAndExpand"
+                        CornerRadius="5"/>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</views:ContentPageBase>

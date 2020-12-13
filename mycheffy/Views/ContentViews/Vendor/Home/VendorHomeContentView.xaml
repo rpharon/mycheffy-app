@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<views:ContentViewBase  xmlns="http://xamarin.com/schemas/2014/forms" 
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        x:Class="mycheffy.Views.ContentViews.Vendor.Home.VendorHomeContentView"
+                        xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                        xmlns:effects="clr-namespace:mycheffy.Effects;assembly=mycheffy"
+                        xmlns:views="clr-namespace:mycheffy.Views.ContentViews;assembly=mycheffy"
+                        xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Vendor.Home;assembly=mycheffy"
+                        x:TypeArguments="viewModels:VendorHomeViewModel"
+                        prism:ViewModelLocator.AutowireViewModel="True">
+    <ScrollView>
+        <StackLayout Padding="14,8,14,8">
+            <StackLayout BackgroundColor="{StaticResource VendorSecondaryColor}" effects:RoundCornersEffect.CornerRadius="12" Padding="21,12,21,12">
+                <Label  
+                        Text="Hello, Robert!"
+                        VerticalOptions="Center" 
+                    FontSize="18"
+                    TextColor="White"
+                        HorizontalOptions="StartAndExpand" 
+                       />
+                <Label  
+                        Text="Welcome to your Dashboard"
+                        VerticalOptions="Center" 
+                        FontSize="14"
+                        TextColor="White"
+                        HorizontalOptions="StartAndExpand" 
+                       />
+            </StackLayout>
+
+            <Grid Margin="0,33,0,40">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Frame HasShadow="False" Padding="0" BackgroundColor="{DynamicResource PrimaryBackgroundColor}" CornerRadius="8">
+                    <Button Text="My Restaurant" BackgroundColor="{DynamicResource PrimaryBackgroundColor}" ContentLayout="Bottom,0" ImageSource="restaurant_button">
+                    </Button>
+                </Frame>
+
+                <Frame Grid.Column="1" HasShadow="False"  Padding="0" BackgroundColor="{DynamicResource PrimaryBackgroundColor}"   CornerRadius="8">
+                    <Button Text="Order History" BackgroundColor="{DynamicResource PrimaryBackgroundColor}" ContentLayout="Bottom,0" ImageSource="history_button"  Padding="0,0,0,20">
+                    </Button>
+                </Frame>
+                <Frame  Grid.Row="1" Grid.Column="0" HasShadow="False" Padding="0" BackgroundColor="{DynamicResource PrimaryBackgroundColor}" CornerRadius="8">
+                    <Button Text="eLearning" BackgroundColor="{DynamicResource PrimaryBackgroundColor}" ContentLayout="Bottom,0" ImageSource="eLearning_button"  >
+                    </Button>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" HasShadow="False" Padding="0" BackgroundColor="{DynamicResource PrimaryBackgroundColor}"  CornerRadius="8">
+                    <Button Text="Switch to&#x0a; Customer View" BackgroundColor="{DynamicResource PrimaryBackgroundColor}" ContentLayout="Bottom,0" ImageSource="customer_view_button"  >
+                    </Button>
+                </Frame>
+            </Grid>
+
+            <CollectionView
+                        ItemsSource="{Binding Reviews}"
+                        VerticalOptions="Start"
+                        SelectionMode="Single"
+                           HeightRequest="142"
+                        HorizontalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                               ItemSpacing="16" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout BackgroundColor="{DynamicResource VendorSecondaryColor }" effects:RoundCornersEffect.CornerRadius="12" Padding="16" WidthRequest="250">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding user.photo}"></Image>
+                                <StackLayout >
+                                    <Label Text="{Binding user.name}" TextColor="White"></Label>
+                                    <!--create IValueConverter for DateOffset-->
+                                    <Label Text="16 days ago" TextColor="White"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                            <Label Text="Star Here" TextColor="White"></Label>
+
+                            <Label Text="{Binding comment}" TextColor="White" MaxLines="2" LineBreakMode="TailTruncation"></Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</views:ContentViewBase>

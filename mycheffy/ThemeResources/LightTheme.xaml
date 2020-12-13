@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="mycheffy.ThemeResources.LightTheme"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!--Application Color-->
+    <Color x:Key="PrimaryBackgroundColor">#FFFFFF</Color>
+    <Color x:Key="SecondaryBackgroundColor">#E6E6E6</Color>
+    <Color x:Key="TertiaryBackgroundColor">#F7F7F7</Color>
+    <Color x:Key="DiscountBackgroundColor">#FF0000</Color>
+    <Color x:Key="FrameOutlineColor">#EFEFEF</Color>
+    <Color x:Key="BaseBackgroundColor">#F3F3F3</Color>
+
+    <Color x:Key="VendorSecondaryColor">#D80027</Color>
+
+    <Color x:Key="LineColor">Gray</Color>
+    <!--Button Colors-->
+    <Color x:Key="ButtonColor">#CB0000</Color>
+    <Color x:Key="DisabledButtonColor">#7F7F7F</Color>
+    <Color x:Key="SecondaryButtonColor">#7F7F7F</Color>
+    <Color x:Key="SelectedItemColor">#7F7F7F</Color>
+    <!--Text Colors-->
+    <Color x:Key="TextColor">#000000</Color>
+    <Color x:Key="TextColor2">#7B7B7B</Color>
+    <Color x:Key="TextColor3">#818181</Color>
+    <Color x:Key="TextColor4">#525252</Color>
+    <Color x:Key="DiscountTextColor">White</Color>
+    <Color x:Key="DisabledTextColor">#7F7F7F</Color>
+    <Color x:Key="UnemphasizedTextColor">#BEBEBE</Color>
+</ResourceDictionary>

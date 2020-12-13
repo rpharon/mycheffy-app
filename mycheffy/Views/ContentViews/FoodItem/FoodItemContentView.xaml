@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ContentViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:mycheffy.Views.ContentViews;assembly=mycheffy"
+             xmlns:viewModels="clr-namespace:mycheffy.ViewModels.FoodItem;assembly=mycheffy"
+             x:TypeArguments="viewModels:FoodItemViewModel"
+             x:Class="mycheffy.Views.ContentViews.FoodItem.FoodItemContentView"
+             Padding="{OnPlatform '0,0,0,0', iOS='0,20,0,0'}">
+    <Label Text="FoodItem ContentView"
+           TextColor="Black"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="Center"/>
+</views:ContentViewBase>

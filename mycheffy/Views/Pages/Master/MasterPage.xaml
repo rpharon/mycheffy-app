@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:mycheffy.Views.Pages;assembly=mycheffy"
+             xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Master;assembly=mycheffy"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:TypeArguments="viewModels:MasterViewModel"
+             x:Class="mycheffy.Views.Pages.Master.MasterPage"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Padding="{OnPlatform '0,0,0,0', iOS='0,50,0,0'}">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <!--Content-->
+            <RowDefinition Height="*"/>
+
+            <!--Footer-->
+            <RowDefinition>
+                <RowDefinition.Height>
+                    <OnIdiom x:TypeArguments="GridLength">
+                        <OnIdiom.Phone>Auto</OnIdiom.Phone>
+                        <OnIdiom.Tablet>80</OnIdiom.Tablet>
+                    </OnIdiom>
+                </RowDefinition.Height>
+            </RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackLayout Padding="{OnPlatform '0,0,0,0', iOS='0,20,0,0'}"
+                     IsVisible="{Binding IsHeader}">
+            <Grid BackgroundColor="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout>
+                    <Label Text="My Cheffy"
+                           TextColor="Black"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                </StackLayout>
+            </Grid> 
+        </StackLayout>
+
+        <ContentView Grid.Row="0" Padding="0,10,0,10"
+                     x:Name="MainContentView"
+                     VerticalOptions="StartAndExpand"
+                     Content="{Binding Content}"/>
+                          
+        <StackLayout Grid.Row="1"                     
+                     IsVisible="{Binding IsFooter}">    
+            <!--<footer:Footer x:Name="Footer"></footer:Footer>-->
+            <pancakeView:PancakeView BackgroundColor="#CB0000"
+                                     CornerRadius="20,20,0,0"
+                                     Padding="20,10,20,20"
+                                      >
+                <pancakeView:PancakeView.Shadow>
+                    <pancakeView:DropShadow Color="Black"/>
+                </pancakeView:PancakeView.Shadow>
+                    <Grid ColumnSpacing="0" Margin="-5,0,-5,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout>
+                            <StackLayout.GestureRecognizers>                                
+                                <TapGestureRecognizer x:Name="ExploreTap"
+                                                        AutomationId="Explore"/> 
+                            </StackLayout.GestureRecognizers>
+                            <pancakeView:PancakeView BackgroundColor="{Binding ExploreBackgroundColor}"
+                                                     CornerRadius="10" 
+                                                     Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="{Binding ExploreLabel}"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout HorizontalOptions="Center"
+                                                 VerticalOptions="Center"
+                                                 Padding="5,0,10,0">
+                                        <Image Source="explore"
+                                               Margin="-10"
+                                               HeightRequest="50"/>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1"
+                                                 HorizontalOptions="EndAndExpand"
+                                                 VerticalOptions="Center">
+                                        <Label Text="Explore"
+                                               TextColor="White"
+                                               FontSize="Small"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </Grid>  
+                            </pancakeView:PancakeView>                      
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="OffersTap"
+                                                        AutomationId="Offers"/>                                  
+                            </StackLayout.GestureRecognizers>
+                            <pancakeView:PancakeView BackgroundColor="{Binding OffersBackgroundColor}"
+                                                     CornerRadius="10" 
+                                                     Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="{Binding OffersLabel}"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout HorizontalOptions="Center"
+                                                 VerticalOptions="Center"                                                 
+                                                 Padding="5,0,10,0">
+                                        <Image Source="offers"
+                                               Margin="-10"
+                                               HeightRequest="50"/>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center">
+                                        <Label Text="Offers"
+                                               TextColor="White"
+                                               FontSize="Small"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </Grid>  
+                            </pancakeView:PancakeView>                      
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="2">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="CartTap"
+                                                      AutomationId="Cart"/> 
+                            </StackLayout.GestureRecognizers>
+                            <pancakeView:PancakeView BackgroundColor="{Binding CartBackgroundColor}"
+                                                     CornerRadius="10" 
+                                                     Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="{Binding CartLabel}"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout HorizontalOptions="Center"
+                                                 VerticalOptions="Center"                                                 
+                                                 Padding="5,0,10,0">
+                                        <Image Source="cart"
+                                               Margin="-10"
+                                               HeightRequest="50"/>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center">
+                                        <Label Text="Cart"
+                                               TextColor="White"
+                                               FontSize="Small"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </Grid>  
+                            </pancakeView:PancakeView>                      
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="3">
+                            <StackLayout.GestureRecognizers> 
+                                <TapGestureRecognizer x:Name="ProfileTap"
+                                                        AutomationId="Profile"/> 
+                            </StackLayout.GestureRecognizers>
+                            <pancakeView:PancakeView BackgroundColor="{Binding ProfileBackgroundColor}"
+                                                     CornerRadius="10" 
+                                                     Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="{Binding ProfileLabel}"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout HorizontalOptions="Center"
+                                                 VerticalOptions="Center"
+                                                 Padding="5,0,10,0">
+                                        <Image Source="profile"
+                                               Margin="-10"
+                                               HeightRequest="50"/>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center">
+                                        <Label Text="Profile"
+                                               TextColor="White"
+                                               FontSize="Small"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </Grid>  
+                            </pancakeView:PancakeView>                      
+                        </StackLayout>
+                    </Grid>  
+            </pancakeView:PancakeView>  
+        </StackLayout>
+    </Grid>
+</views:ContentPageBase>

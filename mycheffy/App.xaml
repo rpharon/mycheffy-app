@@ -4,7 +4,7 @@
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
              x:Class="mycheffy.App">
     <Application.Resources>
-        <!--<ResourceDictionary Source="ThemeResources/LightTheme.xaml" />
+        <ResourceDictionary Source="ThemeResources/LightTheme.xaml" />
 
         <Style x:Key="LeftSearchButtonStyle" TargetType="Button">
             <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}" />
@@ -43,6 +43,6 @@
             <Setter Property="CornerRadius" Value="12" />
             <Setter Property="ScaleY" Value="1" />
             <Setter Property="FontSize" Value="14" />
-        </Style>-->
+        </Style>
     </Application.Resources>
 </prism:PrismApplication>

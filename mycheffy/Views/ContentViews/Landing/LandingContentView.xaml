@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ContentViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:effects="clr-namespace:mycheffy.Effects;assembly=mycheffy"
+                       xmlns:views="clr-namespace:mycheffy.Views.ContentViews;assembly=mycheffy"
+                       xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Landing;assembly=mycheffy"
+                       xmlns:custom="clr-namespace:mycheffy.CustomRenderer"
+                       x:TypeArguments="viewModels:LandingViewModel"
+                       prism:ViewModelLocator.AutowireViewModel="True"
+                       x:Class="mycheffy.Views.ContentViews.Landing.LandingContentView">
+    <Grid  Padding="10,0,10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto">
+            </RowDefinition>
+            <RowDefinition Height="*">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" ImageSource="{Binding LeftButtonIcon}" Style="{DynamicResource LeftSearchButtonStyle}" x:Name="LeftButton"></Button>
+            <StackLayout Grid.Column="1" Orientation="Horizontal"  HorizontalOptions="FillAndExpand" Spacing="0" BackgroundColor="{DynamicResource TertiaryBackgroundColor}"  effects:RoundCornersEffect.CornerRadius="6">
+                <custom:CleanEntry x:Name="SearchEntry" Style="{DynamicResource SearchEntryStyle}" Text="{Binding SearchText}"  Placeholder="Search Here ..."  ReturnType="Search">
+                </custom:CleanEntry>
+                <Image Source="search_icon" BackgroundColor="{DynamicResource TertiaryBackgroundColor}" Margin="0,0,10,0"></Image>
+            </StackLayout>
+        </Grid>
+        <ContentView Grid.Row="1" Content="{Binding Content}"></ContentView>
+    </Grid>
+</views:ContentViewBase>

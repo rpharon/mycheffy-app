@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ContentViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Landing;assembly=mycheffy"
+             x:TypeArguments="viewModels:SearchListViewModel"
+             xmlns:views="clr-namespace:mycheffy.Views.ContentViews;assembly=mycheffy"
+             xmlns:custom="clr-namespace:mycheffy.CustomRenderer"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="mycheffy.Views.ContentViews.Landing.SearchListContentView">
+    <views:ContentViewBase.Content>
+        <ListView
+            x:Name="SearchItems"
+            ItemsSource="{Binding SearchResults}"
+            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <custom:CustomViewCell SelectedItemBackgroundColor="{DynamicResource TertiaryBackgroundColor}">
+                        <Label Text="{Binding name}" VerticalOptions="Center" FontSize="15"></Label>
+                    </custom:CustomViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </views:ContentViewBase.Content>
+</views:ContentViewBase>

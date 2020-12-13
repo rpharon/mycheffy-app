@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ContentViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       x:Class="mycheffy.Views.ContentViews.Landing.LandingPageDetailsContentView"
+                       xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Landing;assembly=mycheffy"
+                       x:TypeArguments="viewModels:LandingPageDetailsViewModel"
+                       xmlns:effects="clr-namespace:mycheffy.Effects;assembly=mycheffy"
+                       xmlns:views="clr-namespace:mycheffy.Views.ContentViews;assembly=mycheffy"
+                       xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                       prism:ViewModelLocator.AutowireViewModel="True">
+    <views:ContentViewBase.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="170*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Top Categories-->
+                <Grid Margin="0,10,0,0" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"></RowDefinition>
+                        <RowDefinition Height="100"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+
+                    <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource TitleSection}">Top Categories</Label>
+                    <Button Grid.Row="0" Grid.Column="1" Text="Filter" Style="{DynamicResource FilterButton}"></Button>
+                    <CollectionView x:Name="TopCatogoriesView"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                                    ItemsSource="{Binding CategoryList}"
+                                    ItemsLayout="HorizontalList"
+                                    VerticalOptions="Start"
+                                    SelectionMode="Single"
+                                    HorizontalScrollBarVisibility="Never">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="5" VerticalOptions="Start">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                               Source="{Binding photo}"
+                               Aspect="AspectFit"
+                               HeightRequest="10"
+                               WidthRequest="10" />
+                                    <Label Grid.Row="1"
+                                       VerticalOptions="Start"
+                               Text="{Binding name}"
+                               FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="15"
+                                   TextColor="{DynamicResource TextColor}"
+                               LineBreakMode="TailTruncation" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+                <!--Popular Items-->
+                <Grid Margin="0,10,0,0" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="150"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+
+                    <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource TitleSection}">Popular Items</Label>
+                    <Button Grid.Row="0" Grid.Column="1" Text="View All" Style="{DynamicResource ViewAllButton}"></Button>
+                    <CollectionView x:Name="PopularItemsView"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                                    ItemsSource="{Binding FeaturedProductList}"
+                                    SelectionMode="Single"
+                                    HorizontalScrollBarVisibility="Never">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="20"></LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame IsClippedToBounds="False"
+                                       WidthRequest="280"
+                                       HasShadow="False"
+                                       CornerRadius="12"
+                                       Margin="0"
+                                       Padding="10"
+                                       OutlineColor="{DynamicResource FrameOutlineColor}"
+                                       BackgroundColor="{DynamicResource PrimaryBackgroundColor}">
+                                    <Frame.OutlineColor>
+                                        <OnPlatform x:TypeArguments="Color"
+                                        Android="#EFEFEF"
+                                        iOS="#EFEFEF"/>
+                                    </Frame.OutlineColor>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding photo}" Aspect="Fill" WidthRequest="100" VerticalOptions="CenterAndExpand" HeightRequest="150" effects:RoundCornersEffect.CornerRadius="12"></Image>
+                                        <Grid VerticalOptions="CenterAndExpand"
+                                                Padding="0"
+                                                HorizontalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Label FontAttributes="Bold"
+                                                    Grid.Row="0"
+                                                    HorizontalTextAlignment="Start"
+                                                    VerticalTextAlignment="Center"
+                                                    FontSize="18"
+                                                   TextColor="{DynamicResource TextColor}"
+                                                   LineBreakMode="TailTruncation"
+                                                    Text="{Binding name}">
+                                            </Label>
+                                            <Label FontAttributes="Bold"
+                                                   Grid.Row="1"
+                                                   Opacity=".5"
+                                                   HorizontalTextAlignment="Start"
+                                                   VerticalTextAlignment="Center"
+                                                   LineBreakMode="TailTruncation"
+                                                   FontSize="14"
+                                                   Text="{Binding restaurant.name,StringFormat='By {0}'}">
+                                            </Label>
+                                            <BoxView Grid.Row="2" Color="{DynamicResource LineColor}" HorizontalOptions="Start" HeightRequest="1" WidthRequest="100" />
+                                            <StackLayout Orientation="Horizontal" Grid.Row="3">
+                                                <Label Text="₱740" TextDecorations="Strikethrough" FontAttributes="Bold" TextColor="{DynamicResource DisabledTextColor}" FontSize="18"></Label>
+                                                <Label Text="₱500" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" FontSize="18"></Label>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+                <!--Nearby Deals-->
+                <Grid Margin="0,10,0,0" Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="208"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+
+                    <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource TitleSection}">Nearby Deals</Label>
+                    <Button Grid.Row="0" Grid.Column="1" Text="View All" HorizontalOptions="End" BackgroundColor="{DynamicResource TertiaryBackgroundColor}"
+                            TextColor="{DynamicResource TextColor3}"
+                            CornerRadius="12" ScaleY="1" FontSize="14"></Button>
+                    <CollectionView x:Name="NearbyDealsView"
+                                    AutomationId="NearbyDeals"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                                    ItemsSource="{Binding NearbyRestaurants}"
+                                    SelectionMode="Single"
+                                    HorizontalScrollBarVisibility="Never">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="20"></LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame IsClippedToBounds="False"
+                                       WidthRequest="220"
+                                       HasShadow="False"
+                                       CornerRadius="12"
+                                       Margin="0"
+                                       Padding="10"
+                                       OutlineColor="{DynamicResource FrameOutlineColor}"
+                                       BackgroundColor="{DynamicResource PrimaryBackgroundColor}">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="{Binding photo}" Aspect="AspectFill" WidthRequest="100" VerticalOptions="CenterAndExpand" HeightRequest="100" effects:RoundCornersEffect.CornerRadius="12"></Image>
+                                        <Label Text="10% OFF" BackgroundColor="{DynamicResource DiscountBackgroundColor}" TextColor="{DynamicResource DiscountTextColor}"
+                                               effects:RoundCornersEffect.CornerRadius="5" FontSize="Micro" HorizontalOptions="End" VerticalOptions="Start" Padding="10,2,10,2"></Label>
+                                        <Label FontAttributes="Bold"
+                                                    Grid.Row="1"
+                                                    HorizontalTextAlignment="Start"
+                                                    VerticalTextAlignment="Center"
+                                                    FontSize="18"
+                                                   TextColor="{DynamicResource TextColor}"
+                                                   LineBreakMode="TailTruncation"
+                                                    Text="{Binding restaurant.name}">
+                                        </Label>
+                                        <Label FontAttributes="Bold"
+                                               Grid.Row="2"
+                                               Opacity=".5"
+                                               HorizontalTextAlignment="Start"
+                                               VerticalTextAlignment="Center"
+                                               LineBreakMode="TailTruncation"
+                                               FontSize="14"
+                                               Text="{Binding name}">
+                                        </Label>
+                                        <StackLayout Orientation="Horizontal" Grid.Row="3">
+                                            <Label Text="₱740" TextDecorations="Strikethrough" FontAttributes="Bold" TextColor="{DynamicResource DisabledTextColor}" FontSize="18"></Label>
+                                            <Label Text="₱500" FontAttributes="Bold" TextColor="{DynamicResource TextColor}" FontSize="18"></Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </views:ContentViewBase.Content>
+</views:ContentViewBase>

@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ContentViewBase  xmlns="http://xamarin.com/schemas/2014/forms" 
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        x:Class="mycheffy.Views.ContentViews.Payments.PaymentsContentView"
+                        xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                        xmlns:views="clr-namespace:mycheffy.Views.ContentViews;assembly=mycheffy"
+                        xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Payments;assembly=mycheffy"
+                        xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                        x:TypeArguments="viewModels:PaymentsContentViewModel"
+                        prism:ViewModelLocator.AutowireViewModel="True">
+    
+    <StackLayout BackgroundColor="{DynamicResource PrimaryBackgroundColor}">
+            <StackLayout Orientation="Horizontal"  Padding="16" >
+                <ImageButton x:Name="BackButton"
+                                 HorizontalOptions="Start"
+                                WidthRequest="45"
+                                 Margin="0,0,16,0"
+                                AutomationId="Back"
+                                Source="back_icon"
+                                BackgroundColor="#E6E6E6"
+                                Opacity="0.7"
+                                Padding="8"
+                                Command="{Binding BackCommand}"/>
+                <StackLayout Spacing="0" VerticalOptions="Start" >
+                    <Label Text="Payment Options" FontSize="20" FontAttributes="Bold" VerticalTextAlignment="Start" TextColor="{DynamicResource TextColor}"></Label>
+                    <Label Text="1 item(s), To pay: ₱260" FontSize="14" VerticalTextAlignment="Start"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Spacing="0">
+                <ScrollView>
+                    <Grid RowSpacing="16"  BackgroundColor="{DynamicResource SecondaryBackgroundColor}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <pancakeView:PancakeView Grid.Row="0" VerticalOptions="FillAndExpand"
+                                          BackgroundColor="{DynamicResource PrimaryBackgroundColor}"
+                                         Padding="16,0,16,16"
+                                          CornerRadius="0,0,16,16">
+                            <StackLayout  Spacing="16" HorizontalOptions="FillAndExpand">
+
+                                <Label Text="Wallets" FontSize="20" FontAttributes="Bold" TextColor="{DynamicResource TextColor}"></Label>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                    <Image Source="paymaya"></Image>
+                                    <Label Text="Paymaya" FontSize="Medium" TextColor="{DynamicResource TextColor}" VerticalTextAlignment="Center"></Label>
+
+                                    <Label TextDecorations="Underline" Text="LINK ACCOUNT" HorizontalOptions="EndAndExpand" Margin="0,0,16,0" 
+                               VerticalTextAlignment="Center" TextColor="{DynamicResource TextColor}"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                    <Image Source="gcash"></Image>
+                                    <Label Text="GCash" FontSize="Medium" TextColor="{DynamicResource TextColor}" VerticalTextAlignment="Center"></Label>
+
+                                    <Label TextDecorations="Underline" Text="LINK ACCOUNT" HorizontalOptions="EndAndExpand" Margin="0,0,16,0" 
+                               VerticalTextAlignment="Center" TextColor="{DynamicResource TextColor}"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                    <Image Source="paypal"></Image>
+                                    <Label Text="Paypal" FontSize="Medium" TextColor="{DynamicResource TextColor}" VerticalTextAlignment="Center"></Label>
+
+                                    <Label TextDecorations="Underline" Text="LINK ACCOUNT" HorizontalOptions="EndAndExpand" Margin="0,0,16,0" 
+                               VerticalTextAlignment="Center" TextColor="{DynamicResource TextColor}"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                    <Image Source="coins"></Image>
+                                    <Label Text="Coins.ph" FontSize="Medium" TextColor="{DynamicResource TextColor}" VerticalTextAlignment="Center"></Label>
+
+                                    <Label TextDecorations="Underline" Text="LINK ACCOUNT" HorizontalOptions="EndAndExpand" Margin="0,0,16,0" 
+                               VerticalTextAlignment="Center" TextColor="{DynamicResource TextColor}"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </pancakeView:PancakeView>
+                        <pancakeView:PancakeView Grid.Row="1" VerticalOptions="FillAndExpand" 
+                                          BackgroundColor="{DynamicResource PrimaryBackgroundColor}"
+                                         Padding="16,24,16,16"
+                                          CornerRadius="16">
+                            <StackLayout  Spacing="16" HorizontalOptions="FillAndExpand">
+
+                                <Label Text="Credit/Debit Cards" FontSize="20" FontAttributes="Bold" TextColor="{DynamicResource TextColor}"></Label>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                    <Image Source="mastercard_tiny"></Image>
+                                    <Label Text="4800-XXXX-XXXX-X844" FontSize="Medium" TextColor="{DynamicResource TextColor}" VerticalTextAlignment="Center"></Label>
+                                    <RadioButton 
+                                        HorizontalOptions="EndAndExpand" Margin="0,0,16,0" 
+                                         VerticalOptions="Center"
+                                         TextColor="{DynamicResource ButtonColor}"
+                                         GroupName="payment" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                    <Image Source="mastercard_tiny"></Image>
+                                    <Label Text="4800-XXXX-XXXX-X844" FontSize="Medium" TextColor="{DynamicResource TextColor}" VerticalTextAlignment="Center"></Label>
+                                    <RadioButton 
+                                        HorizontalOptions="EndAndExpand" Margin="0,0,16,0" 
+                                         VerticalOptions="Center"
+                                         TextColor="{DynamicResource ButtonColor}"
+                                         GroupName="payment" />
+
+                                </StackLayout>
+
+                            </StackLayout>
+                        </pancakeView:PancakeView>
+
+                        <pancakeView:PancakeView Grid.Row="2" VerticalOptions="FillAndExpand" 
+                                          BackgroundColor="{DynamicResource PrimaryBackgroundColor}"
+                                         Padding="16,24,16,16"
+                                          CornerRadius="16">
+
+                            <StackLayout  Spacing="16" HorizontalOptions="FillAndExpand" >
+
+                                <Label Text="Net Banking" FontSize="20" FontAttributes="Bold" TextColor="{DynamicResource TextColor}"></Label>
+                                <ScrollView Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" >
+                                        <Button ContentLayout="Top,0" Text="BDO" Image="bdo" CornerRadius="16" >
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="Normal">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                                 Value="Transparent" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+
+                                                    <VisualState x:Name="Pressed">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                                 Value="LightGray" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+
+                                        </Button>
+                                        <Button ContentLayout="Top,0" Text="BPI" Image="bpi" CornerRadius="16" >
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="Normal">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                                 Value="Transparent" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+
+                                                    <VisualState x:Name="Pressed">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                                 Value="LightGray" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+
+                                        </Button>
+                                        <Button ContentLayout="Top,0" Text="PNB" Image="pnb" CornerRadius="16" >
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="Normal">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                                 Value="Transparent" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+
+                                                    <VisualState x:Name="Pressed">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                                 Value="LightGray" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+
+                                        </Button>
+                                        <Button ContentLayout="Top,0" Text="CIMB" Image="cimb" CornerRadius="16" >
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="Normal">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                                 Value="Transparent" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+
+                                                    <VisualState x:Name="Pressed">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                                 Value="LightGray" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+
+                                        </Button>
+                                        <Button ContentLayout="Top,0" Text="hsbc" Image="hsbc" CornerRadius="16" >
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="Normal">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                                 Value="Transparent" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+
+                                                    <VisualState x:Name="Pressed">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                                 Value="LightGray" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+
+                                        </Button>
+
+                                    </StackLayout>
+
+                                </ScrollView>
+                            </StackLayout>
+
+
+                        </pancakeView:PancakeView>
+                        <pancakeView:PancakeView Grid.Row="3" VerticalOptions="FillAndExpand" 
+                                          BackgroundColor="{DynamicResource PrimaryBackgroundColor}"
+                                         Padding="16,24,16,24"
+                                          CornerRadius="16,16,0,0">
+                            <StackLayout  Spacing="16" HorizontalOptions="FillAndExpand">
+
+                                <Label Text="Pay On Delivery" FontSize="20" FontAttributes="Bold" TextColor="{DynamicResource TextColor}"></Label>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+
+                                    <Label Text="Cash Only" FontSize="Medium" TextColor="{DynamicResource TextColor}" VerticalTextAlignment="Center">
+                                    </Label>
+                                    <RadioButton 
+                                        HorizontalOptions="EndAndExpand" Margin="0,0,16,0" 
+                                         VerticalOptions="Center"
+                                         TextColor="{DynamicResource ButtonColor}"
+                                         GroupName="payment" />
+                                </StackLayout>
+                            </StackLayout>
+                        </pancakeView:PancakeView>
+                    </Grid>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+
+    </views:ContentViewBase>

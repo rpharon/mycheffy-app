@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ContentViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:views="clr-namespace:mycheffy.Views.ContentViews;assembly=mycheffy"
+                       xmlns:viewModels="clr-namespace:mycheffy.ViewModels.CartList;assembly=mycheffy"
+                       x:TypeArguments="viewModels:CartListViewModel"
+                       x:Class="mycheffy.Views.ContentViews.CartList.CartListContentView"
+                       prism:ViewModelLocator.AutowireViewModel="True"
+                       Padding="{OnPlatform '0,0,0,0', iOS='0,20,0,0'}">
+    <StackLayout BackgroundColor="{DynamicResource PrimaryBackgroundColor}">
+        <Grid  Padding="16" HorizontalOptions="FillAndExpand" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ImageButton x:Name="BackButton"
+                         HorizontalOptions="Start"
+                         WidthRequest="45"
+                         Margin="0,0,16,0"
+                         AutomationId="Back"
+                         Source="back_icon"
+                         BackgroundColor="#E6E6E6"
+                         Opacity="0.7"
+                         Padding="8"
+                         Command="{Binding BackCommand}"/>
+            <StackLayout Grid.Row="0" HorizontalOptions="CenterAndExpand">
+                <Label Text="HL Burgers"
+                           FontSize="Body"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"/>
+                <Label Text="Manila"
+                            FontSize="Small"
+                            TextColor="DimGray"
+                           HorizontalOptions="Center"/>
+            </StackLayout>
+        </Grid>
+
+        <StackLayout Spacing="0">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                      
+                    </Grid.RowDefinitions>
+                   
+                    <StackLayout Grid.Row="1">
+                        <ListView x:Name="CartListView"
+                              RowHeight="100"
+                              HasUnevenRows="True"
+                              SelectionMode="None"
+                              HeightRequest="250"
+                              ItemsSource="{Binding CartList}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="45*"/>
+                                                <ColumnDefinition Width="30*"/>
+                                                <ColumnDefinition Width="25*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackLayout Orientation="Vertical"
+                                                     HorizontalOptions="FillAndExpand">
+                                                <Label Text="{Binding Name}"
+                                                    FontAttributes="Bold"/>
+                                                <Label Text="{Binding Size}"
+                                                    TextColor="DimGray"
+                                                    FontSize="Small"/>
+                                                <Label Text="{Binding Options}"/>
+                                            </StackLayout>
+
+                                            <StackLayout Grid.Column="1"
+                                                     HorizontalOptions="CenterAndExpand">
+                                                <StackLayout>
+                                                    <Label Text="{Binding Qty}"
+                                                            TextColor="#CB0000"/>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                            <StackLayout Grid.Column="2"
+                                                     HorizontalOptions="FillAndExpand">
+                                                <Label Text="{Binding Price}"
+                                                   FontAttributes="Bold"
+                                                   HorizontalOptions="EndAndExpand"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+
+                    <StackLayout Grid.Row="2" Padding="10,0,10,0">
+                        <Label Text="Bill Details"
+                           FontSize="Large"
+                           FontAttributes="Bold"/>
+                        <StackLayout Padding="0,20,0,0">
+                            <!--Item Total-->
+                            <StackLayout Orientation="Horizontal"
+                                     Padding="10,0,10,0">
+                                <Label Text="Item Total"
+                                   FontSize="Small"
+                                   HorizontalOptions="StartAndExpand"/>
+                                <Label Text="P250"
+                                   FontSize="Small"
+                                   HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+
+                            <!--Restaurant Charges-->
+                            <StackLayout Orientation="Horizontal"
+                                     Padding="10,0,10,0">
+                                <Label Text="Restaurant Charges"
+                                   FontSize="Small"
+                                   HorizontalOptions="StartAndExpand"/>
+                                <Label Text="₱50"
+                                   FontSize="Small"
+                                   HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+
+                            <!--Delivery Fee-->
+                            <StackLayout Orientation="Horizontal"
+                                     Padding="10,0,10,0">
+                                <Label Text="Delivery Fee"
+                                   FontSize="Small"
+                                   HorizontalOptions="StartAndExpand"/>
+                                <Label Text="₱60"
+                                   FontSize="Small"
+                                   HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+
+                            <!--Offer 10% OFF-->
+                            <StackLayout Orientation="Horizontal"
+                                     Padding="10,0,10,0">
+                                <Label Text="Offer 10% OFF"
+                                   FontSize="Small"
+                                   HorizontalOptions="StartAndExpand"/>
+                                <Label Text="₱0"
+                                   FontSize="Small"
+                                   HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+
+                            <StackLayout Padding="20">
+                                <BoxView Color="Gray" HeightRequest="1"/>
+                            </StackLayout>
+
+                            <!--To Pay-->
+                            <StackLayout Orientation="Horizontal"
+                                     Padding="10,0,10,0">
+                                <Label Text="To Pay"
+                                   FontSize="Medium"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="StartAndExpand"/>
+                                <Label Text="₱360"
+                                   FontSize="Medium"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+
+                            <StackLayout Padding="20">
+                                <BoxView Color="Gray" HeightRequest="1"/>
+                            </StackLayout>
+
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Any request for the restaurant?"
+                                       HorizontalOptions="StartAndExpand"
+                                       VerticalOptions="Center"/>
+                                    <Button x:Name="EditButton" Text="Edit"
+                                        TextColor="#CB0000"
+                                        HorizontalOptions="EndAndExpand"
+                                        VerticalOptions="Center"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="FillAndExpand">
+                                    <Button x:Name="DiscountButton"
+                                        Text="Enter discount code"
+                                        TextColor="White"
+                                        BorderColor="Red"
+                                        BorderWidth="1"
+                                        BackgroundColor="#EBAAAA"
+                                        HorizontalOptions="FillAndExpand"
+                                        Padding="20,0,20,0"/>
+                                    <Button x:Name="ApplyButton"
+                                        Text="Apply"
+                                        TextColor="White"
+                                        BackgroundColor="#7F7F7F"
+                                        HorizontalOptions="FillAndExpand"
+                                        Padding="20,0,20,0"/>
+                                </StackLayout>
+
+                                <StackLayout Padding="20">
+                                    <BoxView Color="Gray" HeightRequest="1"/>
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="FillAndExpand"
+                                             IsVisible="{Binding IsNumberExist}">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Deliver To Home"
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="StartAndExpand"
+                                           VerticalOptions="CenterAndExpand"/>
+                                        <Button x:Name="ChangeButton"
+                                            Text="Change"
+                                            TextColor="#CB0000"
+                                            FontSize="Medium"
+                                            HorizontalOptions="EndAndExpand"
+                                            VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="123 Barangay Street, Metro Manila"
+                                           TextColor="DimGray"
+                                           FontSize="Small"/>
+                                        <Button x:Name="PaymentButton"
+                                                Text="MAKE PAYMENT"
+                                                TextColor="White"
+                                                BorderColor="Red"
+                                                BorderWidth="1"
+                                                BackgroundColor="#CB0000"
+                                                HorizontalOptions="FillAndExpand"
+                                                Padding="20,0,20,0"/>
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="FillAndExpand"
+                                             IsVisible="{Binding IsNumberNotExist}">
+                                    <StackLayout>
+                                        <Label Text="Almost there!"
+                                               FontSize="Medium"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="FillAndExpand"/>
+
+                                        <Label Text="Login/Create Account quickly to place order"
+                                               TextColor="DimGray"
+                                               FontSize="Small"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+
+                                    <StackLayout Padding="0,5,0,0">
+                                        <Button x:Name="ProceedButton"
+                                                Text="PROCEED"
+                                                TextColor="White"
+                                                BackgroundColor="#CB0000"
+                                                HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </StackLayout>
+</views:ContentViewBase>

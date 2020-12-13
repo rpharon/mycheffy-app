@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:views="clr-namespace:mycheffy.Views.Pages;assembly=mycheffy"
+                       xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Restaurant;assembly=mycheffy"
+                       xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                       x:TypeArguments="viewModels:RestaurantViewModel"
+                       x:Class="mycheffy.Views.Pages.Restaurant.RestaurantPage"
+                       xmlns:local="clr-namespace:mycheffy.Converters"
+                       xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                       prism:ViewModelLocator.AutowireViewModel="True"
+                       Padding="{OnPlatform '0,0,0,0', iOS='0,50,0,0'}">
+    <views:ContentPageBase.Resources>
+        <ResourceDictionary>
+            <local:RestaurantDetailQuantityConverter x:Key="restaurantDetailQuantityConverter" />
+        </ResourceDictionary>
+    </views:ContentPageBase.Resources>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout>
+            <AbsoluteLayout>
+                <Image Source="burger"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    Aspect="AspectFit"/>
+                <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1"
+                                            AbsoluteLayout.LayoutFlags="All"
+                                            Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="StartAndExpand"
+                                                Padding="20,50,0,0">
+                        <ImageButton x:Name="BackButton"
+                                                    AutomationId="Back"
+                                                    Source="back"
+                                                    BackgroundColor="#979797"
+                                                    Opacity="0.7"
+                                                    Padding="8"
+                                                    Command="{Binding BackCommand}"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="EndAndExpand"
+                                                Padding="0,50,20,0">
+                        <ImageButton x:Name="ExtraButton"
+                                                    Source="spoon_and_fork_crossed"
+                                                    BackgroundColor="#979797"
+                                                    Opacity="0.7"
+                                                    Padding="6"
+                                                    Command="{Binding ExtraCommand}"/>
+                    </StackLayout>
+                </StackLayout>
+            </AbsoluteLayout>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1"
+                        BackgroundColor="#dfdfdf">
+            <StackLayout Margin="0,-60,0,0">
+                <StackLayout HorizontalOptions="Center"
+                                    Padding="20,0,20,0">
+                    <pancakeView:PancakeView CornerRadius="20,20,0,0"
+                                                    BackgroundColor="#dfdfdf">
+                        <StackLayout BackgroundColor="White">
+                            <StackLayout Padding="10">
+                                <StackLayout Padding="10,0,10,5">
+                                    <Label Text="{Binding Name}"
+                                            FontSize="Title"
+                                            FontAttributes="Bold"/>
+                                    <Label Text="San Juan, Metro Manila"
+                                            FontSize="Small"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Rating, StringFormat='{0} Ratings &#x2022;'}"
+                                            FontSize="Small"/>
+                                        <Label Text="{Binding TotalReviews, StringFormat='{0}'}"
+                                            FontSize="Small"/>
+                                    </StackLayout>
+                                  
+                                    
+                                    <Label Text="46 Minutes (Delivery Time)"
+                                            FontSize="Small"/>
+                                </StackLayout>
+                                <StackLayout Padding="10,0,10,0">
+                                    <Button x:Name="OfferButton"
+                                            Text="OFFER 10% OFF ON ALL BEVERAGES"
+                                            TextColor="#D80027"
+                                            BorderColor="Red"
+                                            BorderWidth="1"
+                                            BackgroundColor="#EBAAAA"
+                                            Command="{Binding OfferCommand}"/>
+                                </StackLayout>
+                            </StackLayout>
+
+                            <ListView x:Name="FoodList"
+                                        SeparatorVisibility="None"
+                                        HasUnevenRows="True"                                          
+                                        VerticalScrollBarVisibility="Never"
+                                        BackgroundColor="#dfdfdf"
+                                        ItemsSource="{Binding Products, Mode=TwoWay}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame Margin="0,15,0,5" HeightRequest="100" CornerRadius="6">
+                                                <Grid Padding="-10,0,-10,0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="30*"/>
+                                                        <ColumnDefinition Width="70*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackLayout>
+                                                        <Image Source="burger"
+                                                                Aspect="AspectFill"
+                                                                HeightRequest="100"/>
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Column="1" Margin="16,0,0,0">
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="{Binding product.name}"
+                                                                FontSize="Large"
+                                                               TextColor="{DynamicResource TextColor}"
+                                                                CharacterSpacing="2"/>
+                                                            <Label Text="{Binding quantity, Converter={StaticResource restaurantDetailQuantityConverter}}"
+                                                                FontSize="Large"
+                                                                TextColor="{DynamicResource ButtonColor}"
+                                                                CharacterSpacing="2"/>
+                                                        </StackLayout>
+
+
+                                                        <Label Text="{Binding product.description}"
+                                                                TextColor="DimGray"
+                                                                FontAttributes="Bold"
+                                                                />
+                                                        <BoxView  Color="{DynamicResource LineColor}" HorizontalOptions="Start" HeightRequest="1" WidthRequest="100" />
+
+                                                        <Label Text="{Binding product.price, StringFormat='₱{0:F2}'}" Margin="0,8,0,0" FontSize="18" FontAttributes="Bold" TextColor="{DynamicResource TextColor}"/>
+                                                       
+                                                       
+                                                    </StackLayout>
+                                                </Grid>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </pancakeView:PancakeView>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Grid.Row="2"
+                        BackgroundColor="#dfdfdf">
+            <pancakeView:PancakeView BackgroundColor="White"
+                                        CornerRadius="20,20,0,0"
+                                        Padding="20,10,20,50" 
+                                        >
+                <pancakeView:PancakeView.Shadow>
+                    <pancakeView:DropShadow Color="Black"/>
+                </pancakeView:PancakeView.Shadow>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical"
+                                    HorizontalOptions="StartAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding TotalQuantity, StringFormat='{0} Item'}"
+                                        FontSize="Large"/>
+                            <Label Text="|"
+                                        FontSize="Large"/>
+                            <Label Text="{Binding TotalPrice, StringFormat='₱{0:F2}'}"
+                                        FontSize="Large"/>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="Extra changes may apply"
+                                        FontSize="Small"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="EndAndExpand">
+                        <Button x:Name="CheckoutButton"
+                                    Text="CHECKOUT"
+                                    TextColor="White"
+                                    BackgroundColor="#D80027"
+                                    Padding="20,0,20,0"
+                                    Command="{Binding CheckoutCommand}"/>
+                    </StackLayout>
+                </StackLayout>
+            </pancakeView:PancakeView>
+        </StackLayout>
+    </Grid>
+</views:ContentPageBase>

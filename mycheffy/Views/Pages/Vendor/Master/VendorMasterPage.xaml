@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mycheffy.Views.Pages.Vendor.Master.VendorMasterPage"
+             xmlns:views="clr-namespace:mycheffy.Views.Pages;assembly=mycheffy"
+             xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Vendor.Master;assembly=mycheffy"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:custom="clr-namespace:mycheffy.CustomRenderer"
+             x:TypeArguments="viewModels:VendorMasterViewModel"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Padding="{OnPlatform '0,0,0,0', iOS='0,50,0,0'}">
+
+    <Grid BackgroundColor="White" Padding="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+
+            <!--Footer-->
+            <RowDefinition Height="80">
+
+            </RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ContentView Grid.Row="0" Padding="0,10,0,10"
+                     VerticalOptions="StartAndExpand"
+                     Content="{Binding Content}"/>
+
+        <StackLayout Grid.Row="1" Padding="0">
+            <pancakeView:PancakeView 
+                                   Margin="-10"
+                                  Padding="0,40,0,10">
+                <pancakeView:PancakeView.Shadow>
+                    <pancakeView:DropShadow Color="Black"/>
+                </pancakeView:PancakeView.Shadow>
+                <pancakeView:PancakeView.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="HomeTap" AutomationId="Explore"/>
+                            </StackLayout.GestureRecognizers>
+
+                            <custom:TintedImage Source="footer_home" TintColor="{Binding HomeColor}" HorizontalOptions="Center" VerticalOptions="Center"></custom:TintedImage>
+
+                            <Label Text="{Binding HomeLabel}"  FontSize="11" TextColor="{Binding HomeColor}"></Label>
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="MessagesTap" AutomationId="Messages"/>
+                            </StackLayout.GestureRecognizers>
+
+                            <custom:TintedImage Source="footer_chat" TintColor="{Binding MessagesColor}" HorizontalOptions="Center" VerticalOptions="Center"></custom:TintedImage>
+
+                            <Label Text="{Binding MessagesLabel}"  FontSize="11" TextColor="{Binding MessagesColor}"></Label>
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="WalletTap" AutomationId="Wallet"/>
+                            </StackLayout.GestureRecognizers>
+
+                            <custom:TintedImage Source="footer_wallet" TintColor="{Binding WalletColor}" HorizontalOptions="Center" VerticalOptions="Center"></custom:TintedImage>
+
+                            <Label Text="{Binding WalletLabel}"  FontSize="11" TextColor="{Binding WalletColor}"></Label>
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="NotificationsTap" AutomationId="Notification"/>
+                            </StackLayout.GestureRecognizers>
+
+                            <custom:TintedImage Source="footer_notification" TintColor="{Binding NotificationColor}" HorizontalOptions="Center" VerticalOptions="Center"></custom:TintedImage>
+
+                            <Label Text="{Binding NotificationLabel}"  FontSize="11" TextColor="{Binding NotificationColor}"></Label>
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="ProfileTap" AutomationId="Wallet"/>
+                            </StackLayout.GestureRecognizers>
+
+                            <custom:TintedImage Source="footer_profile" TintColor="{Binding ProfileColor}" HorizontalOptions="Center" VerticalOptions="Center"></custom:TintedImage>
+
+                            <Label Text="{Binding ProfileLabel}"  FontSize="11" TextColor="{Binding ProfileColor}"></Label>
+                        </StackLayout>
+                        
+                        
+                    </Grid>
+                </pancakeView:PancakeView.Content>
+               
+            </pancakeView:PancakeView>
+        </StackLayout>
+    </Grid>
+</views:ContentPageBase>
