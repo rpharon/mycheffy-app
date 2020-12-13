@@ -11,6 +11,7 @@ using Plugin.FacebookClient;
 using Acr.UserDialogs;
 using Android.Content;
 using Java.Security;
+using Plugin.CurrentActivity;
 
 namespace mycheffy.Droid
 {
@@ -29,7 +30,12 @@ namespace mycheffy.Droid
             FacebookClientManager.Initialize(this);
             GoogleClientManager.Initialize(this);
             UserDialogs.Init(() => this);
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            Xamarin.Auth.Presenters.XamarinAndroid.AuthenticationConfiguration.Init(this, savedInstanceState);
+            Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
 
+            Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
             LoadApplication(new App());
 
 #if DEBUG
@@ -40,6 +46,7 @@ namespace mycheffy.Droid
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
@@ -71,6 +78,19 @@ namespace mycheffy.Droid
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
+            }
+        }
+
+        public override void OnBackPressed()
+        {
+            base.OnBackPressed();
+            if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
+            {
+                // Do something if there are some pages in the `PopupStack`
+            }
+            else
+            {
+                // Do something if there are not any pages in the `PopupStack`
             }
         }
     }

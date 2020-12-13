@@ -25,10 +25,13 @@ namespace mycheffy.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
-
             FacebookClientManager.Initialize(app, options);
             GoogleClientManager.Initialize();
+            Xamarin.Auth.Presenters.XamarinIOS.AuthenticationConfiguration.Init();
+            Plugin.InputKit.Platforms.iOS.Config.Init();
+            Rg.Plugins.Popup.Popup.Init();
+
+            LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
         }

@@ -1,26 +1,130 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mycheffy.Views.Pages.Login.LoginPage">
-    <ContentPage.Content>
-        <StackLayout Padding="20"
-                        VerticalOptions="CenterAndExpand" 
-                        x:Name="mainLayout"
-                        BindableLayout.ItemsSource="{Binding AuthenticationNetworks}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-                        <Button Text="{Binding Name, StringFormat='Login with {0}'}"
-                        ImageSource="{Binding Icon}"
-                        Command="{Binding Path=BindingContext.OnLoginCommand, Source={x:Reference mainLayout}}"
-                        CommandParameter="{Binding .}"     
-                        HeightRequest="45"
-                        TextColor="{Binding Foreground}"
-                        BackgroundColor="{Binding Background}"
-                        WidthRequest="280"
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="FillAndExpand"/>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
+             xmlns:views="clr-namespace:mycheffy.Views.Pages;assembly=mycheffy"
+             xmlns:viewModels="clr-namespace:mycheffy.ViewModels.Login;assembly=mycheffy"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             ios:Page.UseSafeArea="true"
+             Padding="{OnPlatform '0,0,0,0', iOS='0,0,0,0'}"
+             x:TypeArguments="viewModels:LoginViewModel"
+             x:Class="mycheffy.Views.Pages.Login.LoginPage"
+             BackgroundImageSource="splash_screen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout>
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+
+        <StackLayout Grid.Row="1">
+             <pancakeView:PancakeView VerticalOptions="FillAndExpand"
+                                      CornerRadius="20">
+                    <StackLayout BackgroundColor="#ffffff"
+                                 Padding="20,0,20,0">
+                        <Label Text="{Binding LoginTitle}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Title"
+                               FontAttributes="Bold"
+                               CharacterSpacing="1"
+                               Padding="20,20,20,0"/>
+
+                        <StackLayout Orientation="Vertical"
+                                     Padding="20,0,20,0">
+                            <StackLayout Padding="0,10,0,10">
+                                <Label Text="Email ID"
+                                       TextColor="Black"
+                                       FontSize="Small"/>
+                                <Entry x:Name="entryUsername"
+                                       Text="{Binding Username}"
+                                       Background="White"/>                                       
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,10">
+                                <Label Text="Password"
+                                       TextColor="Black"
+                                       FontSize="Small"/>
+                                <Entry x:Name="entryPassword"
+                                       Text="{Binding Password}"
+                                       IsPassword="True"
+                                       Background="White"/>                                       
+                            </StackLayout>
+                            <Button x:Name="SignInButton"
+                                    AutomationId="SignIn"
+                                    ImageSource="white_right_arrow"
+                                    HeightRequest="40"
+                                    WidthRequest="150"
+                                    Margin="0,10,0,0"
+                                    BackgroundColor="{Binding SignInButtonColor}"
+                                    HorizontalOptions="CenterAndExpand"
+                                    IsEnabled="{Binding IsSignUp}"/>    
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     Padding="0,10,0,10">
+                            <Label Text="or"
+                                   TextColor="DimGray"
+                                   FontSize="Large"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal"
+                                     x:Name="mainLayout"
+                                     BindableLayout.ItemsSource="{Binding AuthenticationNetworks}"
+                                     Padding="20,0,20,0"
+                                     HorizontalOptions="Center">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Text="{Binding Name}"
+                                            TextColor="{Binding Foreground}"
+                                            BackgroundColor="{Binding Background}"
+                                            Image="{Binding Icon}"
+                                            Command="{Binding Path=BindingContext.SocialMediaLogin, Source={x:Reference mainLayout}}"
+                                            CommandParameter="{Binding .}"
+                                            BorderColor="DimGray"
+                                            BorderWidth="1"
+                                            Padding="20,0,20,0"
+                                            HorizontalOptions="FillAndExpand"/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+
+                        <StackLayout Padding="0,20,0,0">
+                            <Label FontSize="Medium"
+                                   Padding="0,0,0,60"
+                                   HorizontalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Not yet a member?  "
+                                              TextColor="Black"/>
+                                        <Span Text="Sign Up"
+                                              TextColor="#f75b6a"
+                                              FontAttributes="Bold"
+                                              TextDecorations="Underline">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer x:Name="SignUpLabel"
+                                                                    AutomationId="SignUp"/>
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Button x:Name="SignInAsButton"
+                                    AutomationId="SignInAs"
+                                    Text="{Binding SignInAs}"
+                                    TextColor="White"
+                                    BackgroundColor="{DynamicResource ButtonColor}"
+                                    HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
+             </pancakeView:PancakeView>
+        </StackLayout>
+    </Grid>
+</views:ContentPageBase>
