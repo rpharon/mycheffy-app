@@ -19,14 +19,14 @@ namespace mycheffy.Views.ContentViews.Landing
         {
             InitializeComponent();
 
-            //SearchItems.Events().ItemTapped.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
-            //{
-            //    var item = e.Item as FoodItemModel;
+            SearchItems.Events().ItemTapped.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
+            {
+                var item = e.Item as FoodItemModel;
 
-            //    Console.WriteLine("Search Result: " + item.name);
+                Console.WriteLine("Search Result: " + item.name);
 
-            //    ViewModel.NavigateToRestaurantAsync(item.restaurant.slug);
-            //});
+                ViewModel.NavigateToRestaurantAsync(item.restaurant.slug);
+            });
         }
     }
 }

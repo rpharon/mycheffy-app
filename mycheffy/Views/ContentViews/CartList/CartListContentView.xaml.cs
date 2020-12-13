@@ -15,35 +15,35 @@ namespace mycheffy.Views.ContentViews.CartList
         {
             InitializeComponent();
 
-            //EditButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
-            //{
-            //    CartListDisplayAlert();
-            //});
+            EditButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
+            {
+                CartListDisplayAlert();
+            });
 
-            //DiscountButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
-            //{
-            //    CartListDisplayAlert();
-            //});
+            DiscountButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
+            {
+                CartListDisplayAlert();
+            });
 
-            //ApplyButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
-            //{
-            //    CartListDisplayAlert();
-            //});
+            ApplyButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
+            {
+                CartListDisplayAlert();
+            });
 
-            //ChangeButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
-            //{
-            //    CartListDisplayAlert();
-            //});
+            ChangeButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
+            {
+                CartListDisplayAlert();
+            });
 
-            //ProceedButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(async e =>
-            //{
-            //    await PopupNavigation.Instance.PushAsync(new CartLoginPopup());
-            //});
+            ProceedButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(async e =>
+            {
+                await PopupNavigation.Instance.PushAsync(new CartLoginPopup());
+            });
 
-            //PaymentButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
-            //{
-            //    ViewModel.ProceedPayment();
-            //});
+            PaymentButton.Events().Clicked.ObserveOn(RxApp.MainThreadScheduler).Subscribe(e =>
+            {
+                ViewModel.ProceedPayment();
+            });
         }
 
         private async void CartListDisplayAlert()

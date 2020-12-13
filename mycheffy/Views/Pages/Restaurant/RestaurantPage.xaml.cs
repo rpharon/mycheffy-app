@@ -27,13 +27,13 @@ namespace mycheffy.Views.Pages.Restaurant
                 .DisposeWith(ViewBindings);
 
             this.BindCommand(ViewModel, x => x.Checkout, x => x.CheckoutButton)
-                .DisposeWith(ViewBindings);            
+                .DisposeWith(ViewBindings);
 
-            //FoodList.Events().ItemTapped.ObserveOn(RxApp.MainThreadScheduler).Subscribe(async e =>
-            //{
-            //    ProductListItem item = e.Item as ProductListItem;
-            //    await PopupNavigation.PushAsync(new CustomizeOrderPopup(item));
-            //}).DisposeWith(ViewBindings);
+            FoodList.Events().ItemTapped.ObserveOn(RxApp.MainThreadScheduler).Subscribe(async e =>
+            {
+                ProductListItem item = e.Item as ProductListItem;
+                await PopupNavigation.PushAsync(new CustomizeOrderPopup(item));
+            }).DisposeWith(ViewBindings);
         }
 
         protected override void OnAppearing()

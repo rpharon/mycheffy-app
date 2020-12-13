@@ -20,10 +20,10 @@ namespace mycheffy.Views.Pages.Profile
             this.BindCommand(ViewModel, x => x.Save, x => x.SaveButton)
                     .DisposeWith(ViewBindings);
 
-            //ImageTap.Events().Tapped.ObserveOn(RxApp.MainThreadScheduler).Subscribe(async e =>
-            //{
-            //    await ViewModel.ExecuteViewMap();
-            //});
+            ImageTap.Events().Tapped.ObserveOn(RxApp.MainThreadScheduler).Subscribe(async e =>
+            {
+                await ViewModel.ExecuteViewMap();
+            });
         }
     }
 }
